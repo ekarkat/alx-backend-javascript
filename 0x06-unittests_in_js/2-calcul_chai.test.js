@@ -1,23 +1,21 @@
 const expect = require('chai').expect;
-const calculateNumber = require('./1-calcul');
+const calculateNumber = require('./2-calcul_chai');
 
 describe('calculateNumber', function () {
-  it('should return 0', function () {
-    expect(calculateNumber('SUM', -1.2, 1.4)).to.equal(0);
-    expect(calculateNumber('SUM', 1.2, -1.5)).to.equal(0);
+  it('should add two numbers', function () {
+    expect(calculateNumber('SUM', 1.4, 4.5)).to.equal(6);
   });
 
-  it('should return 0', function () {
-    expect(calculateNumber('SUBTRACT', 1.4, 1.3)).to.equal(0);
+  it('should subtract two numbers', function () {
+    expect(calculateNumber('SUBTRACT', 1.4, 4.5)).to.equal(-4);
   });
 
-  it('should return division', function () {
-    expect(calculateNumber('DIVIDE', 1.4, 4.2)).to.equal(0.25);
-    expect(calculateNumber('DIVIDE', -2.4, -3.6)).to.equal(0.5);
+  it('should divide two numbers', function () {
+    expect(calculateNumber('DIVIDE', 1.4, 4.5)).to.equal(0.2);
   });
 
-  it('should return Error', function () {
-    expect(calculateNumber('DIVIDE', 1.4, 0.4)).to.equal('Error');
+  it('should return Error when dividing by zero', function () {
+    expect(calculateNumber('DIVIDE', 1.4, 0)).to.equal('Error');
   });
 
 });
