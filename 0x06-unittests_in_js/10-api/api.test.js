@@ -34,4 +34,19 @@ describe('Index page', function () {
       done();
     });
   });
+
+  it('check endpoint login', (done) => {
+    const param = {
+      url: 'http://localhost:7865/login',
+      method: 'POST',
+      json: {
+        userName: 'Holo',
+      },
+    };
+    request(param, (error, response, body) => {
+      expect(response.statusCode).to.equal(200);
+      expect(body).to.equal('Welcome Holo');
+      done();
+    });
+	})
 });
