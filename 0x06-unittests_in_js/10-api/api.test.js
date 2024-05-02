@@ -24,4 +24,14 @@ describe('Index page', function () {
       done();
     });
   });
+
+  it('check endpoint available_payments', (done) => {
+    request('http://localhost:7865/available_payments', (error, response, body) => {
+      expect(response.statusCode).to.equal(200);
+      expect(body).to.equal(
+        '{"payment_methods":{"credit_cards":true,"paypal":false}}'
+      );
+      done();
+    });
+  });
 });
