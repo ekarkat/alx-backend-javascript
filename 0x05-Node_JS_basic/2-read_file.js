@@ -21,7 +21,7 @@ const countStudents = (path) => {
       }
     }
     for (const key in fields) {
-      if (key) console.log(`Number of students in FIELD: ${fields[key].length}. List: ${fields[key].join(', ')}`);
+      if (key) console.log(`Number of students in ${key}: ${fields[key].length}. List: ${fields[key].join(', ')}`);
     }
   } catch (error) {
     throw new Error('Cannot load the database');
