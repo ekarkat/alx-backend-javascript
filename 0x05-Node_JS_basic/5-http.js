@@ -7,8 +7,15 @@ const app = http.createServer(async (req, res) => {
     res.write('This is the list of our students\n');
     try {
       const data = await countStudents(process.argv[2]);
+      let i = 1;
       for (const key in data) {
-        if (key) res.write(`Number of students in ${key}: ${data[key].length}. List: ${data[key].join(', ')}\n`);
+        if (key) {
+          res.write(`Number of students in ${key}: ${data[key].length}. List: ${data[key].join(', ')}`);
+          if (i < Object.keys(data).length) {
+            res.write('\n');
+          }
+          i += 1;
+        }
       }
     } catch (error) {
       res.end(error.message);
