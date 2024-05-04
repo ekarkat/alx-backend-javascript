@@ -8,6 +8,12 @@ const app = http.createServer(async (req, res) => {
     try {
       const data = await countStudents(process.argv[2]);
       let i = 1;
+      // eslint-disable-next-line
+      let sum = 0;
+      for (const key in data) {
+        if (key) sum += data[key].length;
+      }
+      res.write(`Number of students: ${sum}\n`);
       for (const key in data) {
         if (key) {
           res.write(`Number of students in ${key}: ${data[key].length}. List: ${data[key].join(', ')}`);
