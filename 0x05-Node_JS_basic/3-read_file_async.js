@@ -24,7 +24,7 @@ const countStudents = (path) => new Promise((resolve, reject) => {
       for (const key in fields) {
         if (key) console.log(`Number of students in ${key}: ${fields[key].length}. List: ${fields[key].join(', ')}`);
       }
-      resolve();
+      resolve(dataCopy);
     }).catch(() => {
       reject(new Error('Cannot load the database'));
     });
