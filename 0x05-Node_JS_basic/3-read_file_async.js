@@ -7,9 +7,11 @@ const countStudents = (path) => new Promise((resolve, reject) => {
       let dataCopy = data.split('\n').slice(1);
       // eslint-disable-next-line
       let students = [];
+      let text = '';
       for (const line of dataCopy) {
         if (line) students.push(line);
       }
+      text += `Number of students: ${students.length}\n`;
       console.log(`Number of students: ${students.length}`);
       // eslint-disable-next-line
       let fields = {};
@@ -22,9 +24,12 @@ const countStudents = (path) => new Promise((resolve, reject) => {
         }
       }
       for (const key in fields) {
-        if (key) console.log(`Number of students in ${key}: ${fields[key].length}. List: ${fields[key].join(', ')}`);
+        if (key) {
+          console.log(`Number of students in ${key}: ${fields[key].length}. List: ${fields[key].join(', ')}`);
+          text += `Number of students in ${key}: ${fields[key].length}. List: ${fields[key].join(', ')}\n`;
+        }
       }
-      resolve(fields);
+      resolve(text);
     }).catch(() => {
       reject(new Error('Cannot load the database'));
     });
